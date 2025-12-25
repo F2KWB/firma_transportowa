@@ -1,42 +1,40 @@
-export default function Header() {
-  return (
-    <header className="w-full bg-white border-b border-zinc-100 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Grupa Logo */}
-        <div className="flex flex-col leading-tight">
-          <span className="font-black text-2xl tracking-tighter text-black uppercase">
-            WANTRANZ
-          </span>
-          <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-[0.2em]">
-            Transport i spedycja międzynarodowa
-          </span>
-        </div>
+'use client'
+import { useState } from 'react';
+import Link from 'next/link';
 
-        {/* Nawigacja sekcji */}
-        <nav className="flex gap-10 text-[11px] font-bold uppercase tracking-widest">
-          <a href="/" className="hover:text-zinc-500 transition-colors">
-            Start
-          </a>
-          <a href="#oferta" className="hover:text-zinc-500 transition-colors">
-            Usługi
-          </a>
-          <a
-            href="#statystyki"
-            className="hover:text-zinc-500 transition-colors"
-          >
-            Statystyki
-          </a>
-          <a href="#zespol" className="hover:text-zinc-500 transition-colors">
-            Flota
-          </a>
-          <a
-            href="#kontakt"
-            className="hover:text-zinc-500 transition-colors border-b-2 border-black pb-1"
-          >
-            Kontakt
-          </a>
-        </nav>
-      </div>
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <header className="bg-white sticky top-0 z-50 shadow-sm">
+      <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        {/* LOGO */}
+        <div className="text-2xl font-black italic tracking-tighter">WANTRANZ</div>
+
+        {/* PRZYCISK HAMBURGER (Tylko na mobile) */}
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden flex flex-col gap-1.5"
+          aria-label="Menu"
+        >
+          <div className={`w-6 h-0.5 bg-black transition-all ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <div className={`w-6 h-0.5 bg-black transition-all ${isOpen ? 'opacity-0' : ''}`} />
+          <div className={`w-6 h-0.5 bg-black transition-all ${isOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+        </button>
+
+        {/* MENU (Desktop + Mobile) */}
+        <div className={`
+          absolute md:static top-full left-0 w-full md:w-auto bg-white 
+          flex flex-col md:flex-row items-center gap-8 p-8 md:p-0
+          transition-all duration-300 shadow-xl md:shadow-none
+          ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 md:translate-y-0 md:opacity-100 pointer-events-none md:pointer-events-auto'}
+        `}>
+          <Link href="/" className="font-bold uppercase text-xs tracking-widest hover:text-gray-500">Strona Główna</Link>
+          <Link href="#oferta" className="font-bold uppercase text-xs tracking-widest hover:text-gray-500">Oferta</Link>
+          <Link href="#zespol" className="font-bold uppercase text-xs tracking-widest hover:text-gray-500">Zespół</Link>
+          <Link href="#kontakt" className="bg-black text-white px-6 py-2 rounded-full font-bold uppercase text-xs">Kontakt</Link>
+        </div>
+      </nav>
     </header>
   );
 }
