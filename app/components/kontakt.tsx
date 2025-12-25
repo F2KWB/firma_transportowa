@@ -15,10 +15,10 @@ export default function Footer() {
         <div>
           <h4 className="font-bold uppercase text-xs tracking-widest mb-6 text-gray-500">Dane firmy</h4>
           <div className="text-sm space-y-2 text-gray-300">
-            <p className="font-bold text-white">WANTRANS Sp. z o.o.</p>
-            <p>ul. Aleja Lipowa 61, 80-298 Leźno</p>
-            <p>NIP: PL5892054627</p>
-            <p>TRANS Id: 121641</p>
+            <p className="font-bold text-white">WANTRAN Sp. z o.o.</p>
+            <p>ul. Aleja Lipowa 6, 80-298 Leźno</p>
+            <p>NIP: PL58920542</p>
+            <p>TRANS Id: 12164</p>
           </div>
         </div>
 
@@ -26,8 +26,8 @@ export default function Footer() {
         <div>
           <h4 className="font-bold uppercase text-xs tracking-widest mb-6 text-gray-500">Kontakt główny</h4>
           <div className="text-sm space-y-2 text-gray-300">
-            <p>TEL: +48 58 684 93 23</p>
-            <p>E-mail: wantrans.sp@wp.pl</p>
+            <p>TEL: +48 58 684 93 2</p>
+            <p>E-mail: wantran.sp@wp.pl</p>
             <p className="pt-4 text-xs text-gray-500 uppercase italic">Baza transportowa czynna 24/7</p>
           </div>
         </div>

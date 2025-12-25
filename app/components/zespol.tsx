@@ -3,48 +3,48 @@ import React from 'react';
 export default function Team() {
   const team = [
     {
-      name: "Andrzej Wanke",
+      name: "Andrzej ",
       role: "Prezes",
       subRole: "Transport, spedycja krajowa i międzynarodowa",
-      kom: "+48 519 140 227",
-      tel: "58 684 93 23",
-      email: "wantrans.sp@wp.pl",
+      kom: "+48 519 140 ",
+      tel: "58 684 93 ",
+      email: "wantran.sp@wp.pl",
       transId: null
     },
     {
-      name: "Michalina Ziegert",
+      name: "Michalina ",
       role: "Specjalista ds. transportu i spedycji",
       subRole: "Logistyka",
-      kom: "+48 519 140 227",
+      kom: "+48 519 140 ",
       tel: null,
-      email: "wantrans.sp@wp.pl",
-      transId: "121641-12"
+      email: "wantran.sp@wp.pl",
+      transId: "121641-"
     },
     {
-      name: "Agata Voelkner",
+      name: "Agata ",
       role: "Specjalista ds. transportu i spedycji",
       subRole: "Logistyka",
-      kom: "+48 519 140 227",
+      kom: "+48 519 140 ",
       tel: "58 684 93 23",
-      email: "wantrans.sp@wp.pl",
-      transId: "121641-11"
+      email: "wantran.sp@wp.pl",
+      transId: "121641"
     },
     {
-      name: "Bernadetta Siecińska",
+      name: "Bernadetta ",
       role: "Specjalista ds. transportu i spedycji",
       subRole: "Logistyka",
-      kom: "+48 792 787 876",
+      kom: "+48 792 787 ",
       tel: null,
-      email: "wantrans.sp@wp.pl",
-      transId: "121641-14"
+      email: "wantran.sp@wp.pl",
+      transId: "121641-1"
     },
     {
-      name: "Marta Wałaszkowska",
+      name: "Marta ",
       role: "Specjalista ds. faktur",
       subRole: null,
-      kom: "+48 739 212 123",
-      tel: "58 684 93 23",
-      email: "wantrans.sp@wp.pl",
+      kom: "+48 739 212 1",
+      tel: "58 684 93 2",
+      email: "wantran.sp@wp.pl",
       transId: null
     }
   ];
