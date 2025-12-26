@@ -28,7 +28,7 @@ export default function ONasPage() {
     { 
       title: "Zespół", 
       desc: "Doświadczeni kierowcy i spedytorzy",
-      src: "/FB_IMG_1766775908608.jpg"
+      src: "/FB_IMG_1766775940628.webp"
     },
   ];
 
@@ -66,8 +66,8 @@ export default function ONasPage() {
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-red-600 text-white p-8 rounded-[2rem] font-black italic shadow-xl">
-              EST. 1992
+            <div className="absolute -bottom-6 -right-1 bg-red-600 text-white p-5 rounded-[2rem] font-black italic shadow-xl">
+              Rok 1992
             </div>
           </div>
         </div>
