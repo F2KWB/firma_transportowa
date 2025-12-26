@@ -12,6 +12,7 @@ export default function FleetHotspotsFixed() {
       id: "trailer",
       label: "Naczepa",
       pos: "top-[40%] left-[85%]", 
+      side: "left", // Na mobile otwórz w lewo, bo punkt jest przy prawej krawędzi
       thumbnail: "/R.webp",
       shortDesc: "Certyfikowana naczepa XL o podwyższonej wytrzymałości mieszcząca 33 palety."
     },
@@ -19,13 +20,13 @@ export default function FleetHotspotsFixed() {
       id: "cabin",
       label: "Kabina",
       pos: "top-[30%] left-[17%]",
+      side: "right", // Na mobile otwórz w prawo, bo punkt jest przy lewej krawędzi
       thumbnail: "/wnetrze.webp",
       shortDesc: "Nowoczesny ciągnik Euro 6 wyposażony w zaawansowane systemy bezpieczeństwa."
     }
   ];
 
   return (
-    /* 1. USUNIĘTO overflow-hidden, DODANO z-20 aby sekcja była nad innymi */
     <section className="relative w-full bg-white py-16 z-20 overflow-x-hidden">
       <div className="max-w-6xl mx-auto px-4 text-center">
         
@@ -36,10 +37,7 @@ export default function FleetHotspotsFixed() {
           </h3>
         </div>
 
-        {/* 2. KONTENER ZEWNĘTRZNY BEZ overflow-hidden */}
         <div className="relative w-full h-auto">
-          
-          {/* 3. TYLKO TUTAJ overflow-hidden (dla zaokrąglonych rogów zdjęcia) */}
           <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100">
             <img
               src={mainImage}
@@ -48,7 +46,6 @@ export default function FleetHotspotsFixed() {
             />
           </div>
 
-          {/* WARSTWA PUNKTÓW - może teraz swobodnie wystawać */}
           <div className="absolute inset-0 pointer-events-none">
             {features.map((f) => (
               <div
@@ -68,16 +65,24 @@ export default function FleetHotspotsFixed() {
                   </span>
                 </button>
 
-                {/* DYMEK - dzięki usunięciu overflow-hidden może wyjść poza sekcję */}
                 {activeId === f.id && (
-                  <div className="absolute bottom-full mb-5 left-1/2 -translate-x-1/2 w-64 md:w-72 bg-white p-2 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] animate-in fade-in zoom-in-95 duration-200 z-50">
-                    <div className="relative h-36 w-full rounded-lg overflow-hidden bg-gray-200 mb-3">
+                  <div className={`
+                    absolute z-50 animate-in fade-in zoom-in-95 duration-200 bg-white p-2 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.3)]
+                    /* DESKTOP (md): Tradycyjnie do góry i na środek */
+                    md:bottom-full md:left-1/2 md:-translate-x-1/2 md:mb-5 md:w-72
+                    /* MOBILE: Na boki, żeby nie wystawało za ekran */
+                    max-md:top-1/2 max-md:-translate-y-1/2 max-md:w-48
+                    ${f.side === "left" ? "max-md:right-full max-md:mr-4" : "max-md:left-full max-md:ml-4"}
+                  `}>
+                    <div className="relative h-28 md:h-36 w-full rounded-lg overflow-hidden bg-gray-200 mb-3">
                         <img src={f.thumbnail} alt={f.label} className="w-full h-full object-cover" />
                     </div>
-                    <p className="text-center text-xs font-bold text-gray-800 px-2 pb-1 leading-tight italic">
+                    <p className="text-center text-[10px] md:text-xs font-bold text-gray-800 px-2 pb-1 leading-tight italic">
                       {f.shortDesc}
                     </p>
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45" />
+                    
+                    {/* Strzałka dymka - widoczna tylko na komputerze */}
+                    <div className="hidden md:block absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45" />
                   </div>
                 )}
               </div>
