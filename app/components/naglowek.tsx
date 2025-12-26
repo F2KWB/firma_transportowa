@@ -1,10 +1,14 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  // 1. Tworzymy referencje do menu i przycisku
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const services = [
     { name: "Transport Krajowy", href: "/uslugi/transport-krajowy" },
@@ -15,6 +19,27 @@ export default function Header() {
     { name: "Spedycja", href: "/uslugi/spedycja" },
     { name: "Logistyka i Magazynowanie", href: "/uslugi/logistyka" },
   ];
+
+  // 2. Logika zamykania menu po kliknięciu na zewnątrz
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // Sprawdzamy czy menu jest otwarte ORAZ czy kliknięcie nie było wewnątrz menu ANI w przycisk otwierania
+      if (
+        isOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <header className="bg-red-600 sticky top-0 z-50 shadow-sm w-full font-sans border-b border-gray-100">
@@ -93,26 +118,30 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* PRZYCISK MENU MOBILE */}
+        {/* PRZYCISK MENU MOBILE - Dodano ref={buttonRef} */}
         <button
+          ref={buttonRef}
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-black"
+          className="md:hidden p-2 text-white" 
           aria-label="Otwórz menu"
         >
           {isOpen ? (
             <span className="text-2xl font-light">✕</span>
           ) : (
             <div className="space-y-1.5">
-              <div className="w-6 h-0.5 bg-black"></div>
-              <div className="w-6 h-0.5 bg-black"></div>
-              <div className="w-4 h-0.5 bg-black ml-auto"></div>
+              <div className="w-6 h-0.5 bg-white"></div> {/* Zmieniono na biały dla kontrastu na czerwonym tle */}
+              <div className="w-6 h-0.5 bg-white"></div>
+              <div className="w-4 h-0.5 bg-white ml-auto"></div>
             </div>
           )}
         </button>
 
-        {/* MENU ROZWIJANE MOBILE */}
+        {/* MENU ROZWIJANE MOBILE - Dodano ref={menuRef} */}
         {isOpen && (
-          <div className="absolute top-20 left-0 w-full bg-white border-b border-gray-100 flex flex-col p-6 gap-6 md:hidden shadow-2xl overflow-y-auto max-h-[calc(100vh-80px)]">
+          <div 
+            ref={menuRef}
+            className="absolute top-20 left-0 w-full bg-white border-b border-gray-100 flex flex-col p-6 gap-6 md:hidden shadow-2xl overflow-y-auto max-h-[calc(100vh-80px)] animate-in slide-in-from-top-5 duration-200"
+          >
             <Link
               href="/szczegolowe_info"
               onClick={() => setIsOpen(false)}
