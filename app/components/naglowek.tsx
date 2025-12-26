@@ -25,7 +25,7 @@ export default function Header() {
 
         {/* MENU DESKTOP */}
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/o-nas" className="text-xs font-bold uppercase tracking-widest text-black hover:text-blue-600 transition-colors">
+          <Link href="/szczegolowe_info" className="text-xs font-bold uppercase tracking-widest text-black hover:text-blue-600 transition-colors">
             O nas
           </Link>
           
@@ -84,7 +84,7 @@ export default function Header() {
         {/* MENU ROZWIJANE MOBILE */}
         {isOpen && (
           <div className="absolute top-20 left-0 w-full bg-white border-b border-gray-100 flex flex-col p-6 gap-6 md:hidden shadow-2xl overflow-y-auto max-h-[calc(100vh-80px)]">
-            <Link href="/o-nas" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-[0.15em] text-black hover:text-blue-600">
+            <Link href="/szczegolowe_info" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-[0.15em] text-black hover:text-blue-600">
               O nas
             </Link>
             
