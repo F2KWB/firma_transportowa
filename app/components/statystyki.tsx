@@ -5,19 +5,19 @@ const stats = [
   {
     id: 1,
     label: "Przejechanych kilometrów",
-    value: "2 500 000+",
+    value: "2,5 mln+",
     icon: <Map className="w-6 h-6 text-red-500" />,
   },
   {
     id: 2,
     label: "Nowoczesnych pojazdów",
-    value: "45",
+    value: "20",
     icon: <Truck className="w-6 h-6 text-red-500" />,
   },
   {
     id: 3,
     label: "Zadowolonych klientów",
-    value: "1200+",
+    value: "1000+",
     icon: <Users className="w-6 h-6 text-red-500" />,
   },
   {
