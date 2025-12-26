@@ -37,13 +37,16 @@ export default function CertificatesSection() {
   return (
     <section id="certyfikaty" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        {/* ZMIANA TUTAJ: zamieniono 'items-end' na 'items-start md:items-end' */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
           <div className="max-w-2xl">
             <h2 className="text-red-600 font-bold uppercase tracking-widest text-sm mb-4">
               Certyfikaty i licencje
             </h2>
           </div>
         </div>
+
+        {/* Reszta kodu bez zmian... */}
 
         <div className="grid md:grid-cols-3 gap-8">
           {certificates.map((cert, index) => (
