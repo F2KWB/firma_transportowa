@@ -26,11 +26,15 @@ const SERVICES = [
   },
 ];
 
-export default function Hero() {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, duration: 30 }, 
-    [Autoplay({ delay: 7000, stopOnInteraction: false })]
-  );
+const [emblaRef, emblaApi] = useEmblaCarousel(
+  { 
+    loop: true, 
+    duration: 25,     // Szybsza reakcja na gest
+    dragFree: true,   // Płynne przesuwanie palcem
+    containScroll: "trimSnaps" 
+  }, 
+  [Autoplay({ delay: 7000, stopOnInteraction: false })]
+);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
