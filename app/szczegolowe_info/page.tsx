@@ -33,7 +33,8 @@ export default function ONasPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+// Dodaj overflow-x-hidden tutaj:
+    <main className="min-h-screen bg-white overflow-x-hidden">
 
       {/* 2. ZIG-ZAG SECTION: Nasze Początki (Archiwalne) */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
