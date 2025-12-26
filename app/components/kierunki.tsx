@@ -1,90 +1,148 @@
-'use client';
-import { MapPin, ArrowRight, Globe2 } from "lucide-react";
-
-const mainRoutes = [
-  { country: "Niemcy", code: "DE", focus: true },
-  { country: "Belgia", code: "BE", focus: true },
-  { country: "Holandia", code: "NL", focus: true },
-  { country: "Luksemburg", code: "LU", focus: true },
-  { country: "Francja", code: "FR", focus: false },
-  { country: "Czechy", code: "CZ", focus: false },
-  { country: "Słowacja", code: "SK", focus: false },
-  { country: "Austria", code: "AT", focus: false },
-];
+"use client";
+import { Ship, Globe2, ChevronRight } from "lucide-react";
 
 export default function RoutesSection() {
   return (
-    <section id="kierunki" className="py-24 bg-gray-50 overflow-hidden">
+    <section id="kierunki" className="py-24 bg-gray-50 overflow-hidden text-black">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* LEWA STRONA: Opis i Specjalizacja */}
-          <div>
-            <h3 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4 text-black">
-              Zasięg Działania
-            </h3>
-            <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter mb-8 leading-none text-black">
-              Obsługujemy całą <br /> Unię Europejską
-            </h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-8 text-black">
-              Choć nasze zestawy można spotkać na drogach całej Europy, naszą główną specjalizacją jest relacja <span className="text-black font-bold">Polska – Kraje Beneluksu oraz Niemcy</span>. 
+          {/* LEWA STRONA: Opis */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-red-600 font-bold uppercase tracking-widest text-[10px] mb-4">
+                Kierunek Specjalizacji
+              </h3>
+              
+              <h2 className="text-2xl md:text-4xl font-black uppercase italic tracking-tighter leading-none flex flex-wrap items-center gap-4">
+                <div className="flex items-center gap-3">
+                  <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-full border border-gray-200 shadow-sm">
+                    <div className="absolute inset-0 flex flex-col">
+                      <div className="h-1/2 bg-white" />
+                      <div className="h-1/2 bg-[#dc2626]" />
+                    </div>
+                  </span>
+                  <span className="text-[#dc2626]">Polska</span>
+                </div>
+                <span className="text-gray-300 font-light">—</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-[#00247d]">Wielka Brytania</span>
+                  <span className="relative flex h-8 w-8 shrink-0 rounded-full border border-gray-200 shadow-sm bg-[#00247d] overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="absolute w-[140%] h-[4px] bg-white rotate-45"></div>
+                      <div className="absolute w-[140%] h-[4px] bg-white -rotate-45"></div>
+                      <div className="absolute w-full h-2 bg-white"></div>
+                      <div className="absolute h-full w-2 bg-white"></div>
+                      <div className="absolute w-full h-1 bg-[#cf142b]"></div>
+                      <div className="absolute h-full w-1 bg-[#cf142b]"></div>
+                    </div>
+                  </span>
+                </div>
+              </h2>
+            </div>
+
+            <p className="text-gray-700 text-xl leading-relaxed italic border-l-4 border-red-600 pl-6">
+              Nasza firma to ekspert w transporcie na trasie <strong>Polska – Wielka Brytania</strong>. 
+              Zapewniamy pełne wsparcie logistyczne w relacjach eksportowych oraz importowych.
             </p>
-            
+
             <div className="space-y-4">
-              <div className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-sm border-l-4 border-blue-600">
-                <Globe2 className="w-6 h-6 text-blue-600 shrink-0" />
+              <div className="flex items-center gap-4 p-6 bg-white rounded-3xl shadow-sm border border-gray-100 group hover:border-red-600 transition-colors">
+                <Globe2 className="w-6 h-6 text-red-600" />
                 <div>
-                  <h4 className="font-bold text-gray-900 uppercase text-sm tracking-tight">Główny korytarz transportowy</h4>
-                  <p className="text-gray-500 text-sm">Regularne linie: PL — DE — NL — BE — LU</p>
+                  <h4 className="font-black text-black uppercase italic text-sm tracking-tight">
+                    Transport Międzynarodowy
+                  </h4>
+                  <p className="text-gray-500 text-xs">Bezpośrednie połączenie i stały monitoring</p>
                 </div>
               </div>
-              <p className="text-xs text-gray-400 font-medium uppercase tracking-widest pl-2 text-black">
-                Dostawy Express oraz Standard (FTL/LTL)
-              </p>
             </div>
           </div>
 
-          {/* PRAWA STRONA: Siatka krajów */}
+          {/* PRAWA STRONA: Animowana Ciężarówka */}
           <div className="relative">
-            {/* Dekoracyjne tło w formie kół */}
-            <div className="absolute -top-10 -right-10 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50" />
-            
-            <div className="grid grid-cols-2 gap-4 relative z-10">
-              {mainRoutes.map((route) => (
-                <div 
-                  key={route.code}
-                  className={`p-6 rounded-2xl border transition-all duration-300 flex items-center justify-between group ${
-                    route.focus 
-                    ? "bg-white border-blue-100 shadow-md scale-105" 
-                    : "bg-gray-100/50 border-transparent hover:bg-white hover:border-gray-200"
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-xs text-gray-500 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                      {route.code}
-                    </div>
-                    <span className="font-bold text-gray-900 uppercase tracking-tight text-sm">
-                      {route.country}
-                    </span>
-                  </div>
-                  {route.focus && (
-                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" title="Kierunek priorytetowy" />
-                  )}
+            <div className="bg-white p-12 md:p-24 rounded-[3rem] shadow-2xl border border-gray-100 relative z-10 overflow-hidden">
+              
+              {/* OŚ TRASY Z KRESKĄ I STRZAŁKĄ */}
+              <div className="flex items-center justify-between relative z-20 mb-12">
+                <div className="text-center">
+                  <div className="text-4xl mb-2">🇵🇱</div>
+                  <div className="font-bold text-lg">PL</div>
                 </div>
-              ))}
-            </div>
 
-            {/* CTA pod mapą */}
-            <div className="mt-8 flex items-center justify-center lg:justify-start gap-4">
-              <div className="h-[1px] w-12 bg-gray-300" />
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] text-black">
-                I wiele innych
-              </span>
+                {/* DYNAMIZUJĄCA KRESKA ŁĄCZĄCA */}
+                <div className="flex-1 flex items-center px-4 relative">
+                    <div className="w-full h-[2px] bg-gray-200 relative overflow-hidden">
+                        {/* Animowany gradient na kresce */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-600 to-transparent animate-shimmer" />
+                    </div>
+                    <ChevronRight className="w-5 h-5 text-red-600 -ml-1 animate-pulse" />
+                </div>
+
+                <div className="text-center">
+                  <div className="text-4xl mb-2">🇬🇧</div>
+                  <div className="font-bold text-lg">UK</div>
+                </div>
+              </div>
+
+              {/* Droga z jadącą ciężarówką */}
+              <div className="relative h-20 bg-gray-50 rounded-2xl border-b-4 border-gray-200 overflow-hidden">
+                <div className="absolute top-1/2 w-full h-[2px] bg-dashed-line opacity-30"></div>
+                
+                <div className="absolute w-full h-full animate-drive">
+                  <div className="absolute top-1/2 -translate-y-1/2 flex items-end">
+                    <div className="w-20 h-8 bg-red-600 rounded-sm relative shadow-md">
+                      <div className="absolute -bottom-1 left-2 w-3 h-3 bg-black rounded-full border-2 border-gray-400"></div>
+                      <div className="absolute -bottom-1 left-6 w-3 h-3 bg-black rounded-full border-2 border-gray-400"></div>
+                    </div>
+                    <div className="w-2 h-1 bg-gray-400 mb-1"></div>
+                    <div className="relative flex items-end">
+                      <div className="w-8 h-10 bg-red-600 rounded-t-md relative shadow-md">
+                        <div className="absolute top-2 right-1 w-4 h-3 bg-blue-100 rounded-sm opacity-80"></div>
+                      </div>
+                      <div className="w-6 h-5 bg-red-600 rounded-r-md shadow-md"></div>
+                      <div className="absolute -bottom-1 left-1 w-3 h-3 bg-black rounded-full border-2 border-gray-400"></div>
+                      <div className="absolute -bottom-1 right-1 w-3 h-3 bg-black rounded-full border-2 border-gray-400"></div>
+                      <div className="absolute -top-3 left-1 w-1.5 h-6 bg-gradient-to-t from-gray-400 to-gray-200 rounded-full shadow-sm"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-12 text-center">
+                <div className="inline-block bg-red-50 px-6 py-2 rounded-full border border-red-100">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-red-700">
+                    Szybka wycena trasy Polska — UK
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
+
+      <style jsx>{`
+        .bg-dashed-line {
+          background-image: linear-gradient(to right, #6b7280 50%, rgba(255, 255, 255, 0) 0%);
+          background-position: center;
+          background-size: 20px 2px;
+          background-repeat: repeat-x;
+        }
+        @keyframes drive {
+          0% { transform: translateX(-150px); }
+          100% { transform: translateX(100%); }
+        }
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .animate-drive {
+          animation: drive 6s linear infinite;
+        }
+        .animate-shimmer {
+          animation: shimmer 2s infinite linear;
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { MapPin, Phone, Mail, Clock, ExternalLink } from "lucide-react";
 
 export default function LocationSection() {
@@ -8,44 +8,53 @@ export default function LocationSection() {
     city: "00-000 Miejscowość",
     phone: "+48 123 456 789",
     email: "biuro@wantranz.pl",
-    hours: "Pon - Pt: 08:00 - 16:00"
+    hours: "Pon - Pt: 08:00 - 16:00",
   };
 
   return (
     <section id="kontakt" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
-          
           {/* LEWA STRONA: Dane adresowe */}
           <div className="flex flex-col justify-center">
-            <h3 className="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">
+            <h3 className="text-red-600 font-bold uppercase tracking-widest text-sm mb-4">
               Gdzie nas znaleźć?
             </h3>
             <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter mb-8 leading-none text-black">
               Siedziba Firmy <br /> i Baza Transportowa
             </h2>
-            
+
             <div className="space-y-8">
               {/* Adres */}
               <div className="flex gap-6 items-start">
-                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
-                  <MapPin className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center shrink-0">
+                  <MapPin className="w-6 h-6 text-red-600" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 uppercase text-xs tracking-widest mb-1">Adres biura</h4>
-                  <p className="text-gray-600 font-medium">{companyData.address}</p>
-                  <p className="text-gray-600 font-medium">{companyData.city}</p>
+                  <h4 className="font-bold text-gray-900 uppercase text-xs tracking-widest mb-1">
+                    Adres biura
+                  </h4>
+                  <p className="text-gray-600 font-medium">
+                    {companyData.address}
+                  </p>
+                  <p className="text-gray-600 font-medium">
+                    {companyData.city}
+                  </p>
                 </div>
               </div>
 
               {/* Kontakt */}
               <div className="flex gap-6 items-start">
-                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
-                  <Phone className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center shrink-0">
+                  <Phone className="w-6 h-6 text-red-600" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 uppercase text-xs tracking-widest mb-1">Zadzwoń do nas</h4>
-                  <p className="text-xl font-black text-black italic tracking-tight">{companyData.phone}</p>
+                  <h4 className="font-bold text-gray-900 uppercase text-xs tracking-widest mb-1">
+                    Zadzwoń do nas
+                  </h4>
+                  <p className="text-xl font-black text-black italic tracking-tight">
+                    {companyData.phone}
+                  </p>
                 </div>
               </div>
 
@@ -53,21 +62,25 @@ export default function LocationSection() {
               <div className="grid sm:grid-cols-2 gap-8 pt-4 border-t border-gray-100">
                 <div className="flex gap-4 items-center">
                   <Mail className="w-5 h-5 text-gray-400" />
-                  <span className="text-sm font-bold text-gray-600">{companyData.email}</span>
+                  <span className="text-sm font-bold text-gray-600">
+                    {companyData.email}
+                  </span>
                 </div>
                 <div className="flex gap-4 items-center">
                   <Clock className="w-5 h-5 text-gray-400" />
-                  <span className="text-sm font-bold text-gray-600">{companyData.hours}</span>
+                  <span className="text-sm font-bold text-gray-600">
+                    {companyData.hours}
+                  </span>
                 </div>
               </div>
             </div>
 
             <div className="mt-12">
-              <a 
+              <a
                 href={`https://www.google.com/maps/dir/?api=1&destination=${companyData.address}+${companyData.city}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full font-bold uppercase text-xs hover:bg-blue-600 transition-all shadow-lg"
+                className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full font-bold uppercase text-xs hover:bg-red-600 transition-all shadow-lg"
               >
                 Wyznacz trasę
                 <ExternalLink className="w-4 h-4" />
@@ -88,7 +101,6 @@ export default function LocationSection() {
               className="grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
             ></iframe>
           </div>
-
         </div>
       </div>
     </section>

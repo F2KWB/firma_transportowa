@@ -1,131 +1,132 @@
-// 'use client'
-// import React, { useState } from 'react';
-
-// export default function TruckSection() {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   return (
-//     <section className="max-w-7xl mx-auto px-4 py-24 relative">
-//       <div className="mb-16 text-center">
-//         <h2 className="text-sm uppercase tracking-[0.3em] text-gray-400 font-bold mb-4">Nasza Flota</h2>
-//         <h3 className="text-5xl font-black uppercase italic tracking-tighter">Standard Premium</h3>
-//       </div>
-
-//       <div className="relative w-full max-w-5xl mx-auto">
-//         {/* GŁÓWNE ZDJĘCIE CIĘŻARÓWKI (Placeholder - zamień na swój plik PNG) */}
-//         <img 
-//           src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQafNuZImz2OwbHTT2gfaQf8BIRxr30yCeVhcrxV-dX5Ep3Zqw6wUs83_Cg3Mtd" 
-//           alt="Ciężarówka Wantranz" 
-//           className="w-full h-auto rounded-[3rem]" 
-//         />
-
-//         {/* INTERAKTYWNY PUNKT (Hotspot) */}
-//         <div 
-//           className="absolute top-[40%] right-[85%] z-20" // Pozycjonowanie punktu na przyczepie
-//         >
-//           {/* Pulsujący punkt */}
-//           <button 
-//             onClick={() => setIsOpen(!isOpen)}
-//             className="relative flex h-8 w-8 items-center justify-center"
-//             aria-label="Pokaż wnętrze przyczepy"
-//           >
-//             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-//             <span className="relative inline-flex rounded-full h-4 w-4 bg-white shadow-lg"></span>
-//           </button>
-
-//           {/* MAŁY KAFELEK (Pojawia się po kliknięciu) */}
-//           {isOpen && (
-//             <div className="absolute top-10 left-1/2 -translate-x-1/2 w-64 bg-white p-4 rounded-3xl shadow-2xl border border-gray-100 animate-in fade-in zoom-in duration-300 z-30">
-//               <div className="relative h-40 w-full overflow-hidden rounded-2xl mb-3">
-//                 <img 
-//                   src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRXy1STT0cZYMjPIH3xU5PGkW9WDNiLZu0YkwHAst06cb2UxLFvFhSuxzmveOXu" 
-//                   alt="Wnętrze przyczepy"
-//                   className="w-full h-full object-cover"
-//                 />
-//               </div>
-//               <h4 className="font-bold uppercase italic text-sm">Wnętrze typu Firana</h4>
-//               <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">
-//                 Kubatura do 100 m³ | Czystość i bezpieczeństwo
-//               </p>
-//               <button 
-//                 onClick={() => setIsOpen(false)}
-//                 className="mt-3 text-[10px] font-bold uppercase underline"
-//               >
-//                 Zamknij
-//               </button>
-//             </div>
-//           )}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-'use client'
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
+import { Truck, Box, ShieldCheck, Fuel } from "lucide-react";
 
 export default function TruckSection() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<string | null>(null);
+
+  const features = [
+    {
+      id: "trailer",
+      label: "Naczepa",
+      pos: "top-[45%] left-[30%]",
+      title: "Firana Standard",
+      desc: "Wysokość 2.75m | 33 palety",
+    },
+    {
+      id: "engine",
+      label: "Silnik",
+      pos: "top-[60%] left-[75%]",
+      title: "Euro 6",
+      desc: "Ekologiczny transport i niskie spalanie",
+    },
+  ];
 
   return (
-    <section id="flota" className="w-full py-24 overflow-hidden">
-      {/* Nagłówek - wycentrowany na mobile */}
-      <div className="max-w-7xl mx-auto px-6 mb-12 text-center md:text-left">
-        <h2 className="text-sm uppercase tracking-[0.3em] text-gray-400 font-bold mb-4">Nasza Flota</h2>
-        <h3 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-black">
-          Standard Premium
-        </h3>
-      </div>
-
-      {/* Kontener zdjęcia - Full width na mobile */}
-      <div className="relative w-full max-w-5xl mx-auto px-0 md:px-6">
-        <div className="relative inline-block w-full">
-          {/* GŁÓWNE ZDJĘCIE */}
-          <img 
-            src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQafNuZImz2OwbHTT2gfaQf8BIRxr30yCeVhcrxV-dX5Ep3Zqw6wUs83_Cg3Mtd" 
-            alt="Ciężarówka Wantranz" 
-            className="w-full h-auto md:rounded-[3rem] shadow-2xl" 
-          />
-
-          {/* INTERAKTYWNY PUNKT (Hotspot) */}
-          <div 
-            className="absolute top-[40%] left-[15%] md:left-[15%] z-20" 
-          >
-            {/* Pulsujący punkt */}
-            <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className="relative flex h-10 w-10 items-center justify-center group"
-              aria-label="Pokaż wnętrze przyczepy"
-            >
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-5 w-5 bg-white shadow-xl border-2 border-black/10"></span>
-            </button>
-
-            {/* MAŁY KAFELEK - Poprawione pozycjonowanie, by nie wychodził za ekran */}
-            {isOpen && (
-              <div className="absolute top-12 left-0 md:left-1/2 md:-translate-x-1/2 w-[280px] sm:w-64 bg-white p-4 rounded-3xl shadow-2xl border border-gray-100 animate-in fade-in zoom-in duration-300 z-30">
-                <div className="relative h-40 w-full overflow-hidden rounded-2xl mb-3">
-                  <img 
-                    src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRXy1STT0cZYMjPIH3xU5PGkW9WDNiLZu0YkwHAst06cb2UxLFvFhSuxzmveOXu" 
-                    alt="Wnętrze przyczepy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h4 className="font-bold uppercase italic text-sm text-black">Wnętrze typu Firana</h4>
-                <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-1 leading-tight">
-                  Kubatura do 100 m³ | Czystość i bezpieczeństwo
-                </p>
-                <button 
-                  onClick={() => setIsOpen(false)}
-                  className="mt-4 w-full py-2 bg-gray-50 rounded-xl text-[10px] font-bold uppercase hover:bg-black hover:text-white transition-colors"
-                >
-                  Zamknij
-                </button>
-              </div>
-            )}
+    <section
+      id="flota"
+      className="w-full py-32 bg-white overflow-hidden text-black"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        {/* NAGŁÓWEK Z LINIA DEKORACYJNĄ */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="max-w-2xl">
+            <h2 className="text-red-600 text-sm font-black uppercase tracking-[0.3em] mb-4">
+              Nasz pojazd
+            </h2>
           </div>
+          <p className="text-gray-500 font-medium uppercase text-xs tracking-widest max-w-[200px] border-l-2 border-red-600 pl-4">
+            Nowoczesne zestawy gotowe na każdą trasę
+          </p>
+        </div>
+
+        {/* GŁÓWNY KONTENER ZDJĘCIA */}
+        <div className="relative group">
+          {/* Dekoracyjne tło pod zdjęciem */}
+          <div className="absolute -inset-4 bg-gray-50 rounded-[4rem] -z-10 scale-95 group-hover:scale-100 transition-transform duration-700"></div>
+
+          <div className="relative overflow-hidden rounded-[2rem] md:rounded-[4rem] shadow-2xl bg-gray-200">
+            <img
+              src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQafNuZImz2OwbHTT2gfaQf8BIRxr30yCeVhcrxV-dX5Ep3Zqw6wUs83_Cg3Mtd"
+              alt="Ciężarówka Wantranz"
+              className="w-full h-auto object-cover transform transition-transform duration-1000 group-hover:scale-105"
+            />
+
+            {/* HOTSPOTY */}
+            {features.map((f) => (
+              <div
+                key={f.id}
+                className={`absolute ${f.pos} z-20 -translate-x-1/2 -translate-y-1/2`}
+              >
+                <button
+                  type="button" // Rozwiązuje błąd button-type
+                  onClick={() => setActiveTab(activeTab === f.id ? null : f.id)}
+                  className="relative flex h-12 w-12 items-center justify-center group"
+                  aria-label={`Pokaż informacje o: ${f.label}`} // Rozwiązuje błąd axe/name-role-value
+                  title={`Kliknij, aby zobaczyć szczegóły: ${f.label}`} // Dodatkowa informacja po najechaniu myszką
+                >
+                  <span
+                    className={`animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-40 ${
+                      activeTab === f.id ? "hidden" : ""
+                    }`}
+                  ></span>
+                  <span
+                    className={`relative inline-flex rounded-full h-6 w-6 shadow-xl border-4 border-white transition-all duration-300 ${
+                      activeTab === f.id ? "bg-red-600 scale-125" : "bg-black"
+                    }`}
+                  ></span>
+                </button>
+
+                {activeTab === f.id && (
+                  <div className="absolute top-14 left-1/2 -translate-x-1/2 w-64 bg-white/90 backdrop-blur-md p-6 rounded-3xl shadow-2xl border border-white/20 animate-in slide-in-from-top-4 duration-300 z-30 text-black">
+                    <h4 className="font-black uppercase italic text-lg mb-1">
+                      {f.title}
+                    </h4>
+                    <p className="text-xs text-gray-600 font-medium uppercase tracking-tight leading-relaxed">
+                      {f.desc}
+                    </p>
+                    <div className="mt-4 h-1 w-12 bg-red-600"></div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* SPECYFIKACJA TECHNICZNA POD ZDJĘCIEM */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20">
+          <SpecItem icon={<Box />} label="Ładowność" value="24 Tony" />
+          <SpecItem icon={<Truck />} label="Typ zabudowy" value="Firana / XL" />
+          <SpecItem
+            icon={<ShieldCheck />}
+            label="Zabezpieczenie"
+            value="Mata / Pasy"
+          />
+          <SpecItem icon={<Fuel />} label="Norma Emisji" value="Euro 6" />
         </div>
       </div>
     </section>
+  );
+}
+
+function SpecItem({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3 p-6 rounded-3xl hover:bg-gray-50 transition-colors">
+      <div className="text-red-600 w-6 h-6">{icon}</div>
+      <div>
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">
+          {label}
+        </p>
+        <p className="text-xl font-bold uppercase italic text-black">{value}</p>
+      </div>
+    </div>
   );
 }
