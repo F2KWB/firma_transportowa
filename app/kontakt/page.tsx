@@ -86,7 +86,7 @@ export default function KontaktPage() {
           </div>
 
           <h1 className="text-3xl md:text-5xl font-black uppercase italic tracking-tighter text-white leading-none mb-6">
-            Poznaj nasz <span className="text-red-600">zespół</span>
+            Poznaj nasz zespół
           </h1>
 
           <p className="text-gray-200 max-w-xl text-xs md:text-sm font-bold uppercase tracking-widest border-l-2 border-red-600 pl-4">

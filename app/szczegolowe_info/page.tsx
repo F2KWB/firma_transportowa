@@ -5,10 +5,10 @@ import {
   Truck,
   ShieldCheck,
   Camera,
+  ArrowRight
 } from "lucide-react";
 
 export default function ONasPage() {
-  // Dane galerii z dodanymi linkami do zdjęć
   const gallery = [
     { 
       title: "Nasza Flota", 
@@ -33,17 +33,18 @@ export default function ONasPage() {
   ];
 
   return (
-// Dodaj overflow-x-hidden tutaj:
     <main className="min-h-screen bg-white overflow-x-hidden">
 
-      {/* 2. ZIG-ZAG SECTION: Nasze Początki (Archiwalne) */}
+      {/* 2. ZIG-ZAG SECTION: Nasze Początki */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-6">
             <span className="text-red-600 font-black uppercase tracking-widest text-sm italic">
               Nasze Początki
             </span>
-            <h2 className="text-4xl font-black uppercase italic tracking-tighter">Budujemy zaufanie od lat</h2>
+            <h2 className="text-4xl font-black uppercase italic tracking-tighter text-gray-900 leading-none">
+                Budujemy zaufanie <br/> <span className="text-red-600">od lat</span>
+            </h2>
             <p className="text-gray-500 font-medium leading-relaxed">
               Historia WANTRANZ zaczęła się od marzenia o stworzeniu firmy, dla
               której terminowość to świętość. Przez dwie dekady rozbudowaliśmy
@@ -53,7 +54,7 @@ export default function ONasPage() {
             <div className="flex gap-4 pt-4">
               <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 shadow-sm">
                 <History className="text-red-600 mb-2" />
-                <p className="text-xs font-bold uppercase italic">
+                <p className="text-xs font-bold uppercase italic text-gray-900">
                   Założenie: 1992
                 </p>
               </div>
@@ -67,14 +68,14 @@ export default function ONasPage() {
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
             </div>
-            <div className="absolute -bottom-6 right-0 md:-right-6 bg-red-600 text-white p-5 rounded-[2rem] font-black italic shadow-xl">
+            <div className="absolute -bottom-6 right-0 md:-right-6 bg-red-600 text-white px-6 py-4 rounded-2xl font-black italic shadow-xl text-sm">
               Rok 1992
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. ZIG-ZAG SECTION: Dzisiaj (Nowoczesne) */}
+      {/* 3. ZIG-ZAG SECTION: Dzisiaj */}
       <section className="py-24 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
           <div className="order-2 lg:order-1 relative">
@@ -90,18 +91,19 @@ export default function ONasPage() {
             <span className="text-red-600 font-black uppercase tracking-widest text-sm italic">
               Dzisiaj
             </span>
-            <h2 className="text-4xl font-black uppercase italic tracking-tighter">Lider nowoczesnej logistyki</h2>
+            <h2 className="text-4xl font-black uppercase italic tracking-tighter text-gray-900 leading-none">
+                Lider nowoczesnej <br/> <span className="text-red-600">logistyki</span>
+            </h2>
             <p className="text-gray-500 font-medium leading-relaxed">
               Obecnie WANTRANZ to synonim nowoczesnej logistyki. Inwestujemy w
               najnowsze modele Scania i Volvo, spełniające rygorystyczne normy
-              Euro 6. Każdy nasz pojazd jest monitorowany 24/7, co daje naszym
-              klientom pełen spokój o powierzony ładunek.
+              Euro 6. Każdy nasz pojazd jest monitorowany 24/7.
             </p>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3 font-bold italic text-sm">
+              <li className="flex items-center gap-3 font-bold italic text-sm text-gray-900">
                 <ShieldCheck className="text-red-600 w-5 h-5" /> Monitoring GPS 24/7
               </li>
-              <li className="flex items-center gap-3 font-bold italic text-sm">
+              <li className="flex items-center gap-3 font-bold italic text-sm text-gray-900">
                 <Truck className="text-red-600 w-5 h-5" /> Flota nie starsza niż 3 lata
               </li>
             </ul>
@@ -119,7 +121,7 @@ export default function ONasPage() {
                 Nasze zaplecze
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter">
+            <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-gray-900">
               Galeria WANTRANZ
             </h2>
           </div>
@@ -134,17 +136,12 @@ export default function ONasPage() {
               key={index}
               className="group relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-gray-100 cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500"
             >
-              {/* Overlay z tekstem */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 flex flex-col justify-end p-8 text-white">
-                <h4 className="font-black uppercase italic text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <h4 className="font-black uppercase italic text-xl">
                   {item.title}
                 </h4>
-                <p className="text-xs font-medium opacity-80 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                  {item.desc}
-                </p>
+                <p className="text-xs font-medium opacity-80">{item.desc}</p>
               </div>
-              
-              {/* Obraz */}
               <img 
                 src={item.src} 
                 alt={item.title} 
@@ -155,18 +152,36 @@ export default function ONasPage() {
         </div>
       </section>
 
-      {/* 5. CTA SECTION */}
-      <section className="py-24 px-6 bg-red-600 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white mb-8 leading-tight">
-            Gotowy do współpracy <br />z profesjonalistami?
+      {/* 5. CTA SECTION - Nowa, spójna i responsywna */}
+      <section className="relative py-24 px-6 overflow-hidden">
+        {/* Tło ze zdjęciem i gradientem */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/FB_IMG_1766775905563.jpg"
+            className="w-full h-full object-cover"
+            alt="CTA background"
+          />
+          {/* Czerwona nakładka dla spójności */}
+          <div className="absolute inset-0 bg-red-600/90 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-br from-red-700 via-red-600 to-black/60" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl lg:text-7xl font-black uppercase italic tracking-tighter text-white mb-8 leading-[0.9]">
+            Gotowy do współpracy <br className="hidden md:block" />
+            <span className="text-black">z profesjonalistami?</span>
           </h2>
-          <div className="flex flex-wrap justify-center gap-6 font-black italic">
+          
+          <p className="text-white/80 font-bold uppercase tracking-widest text-[10px] md:text-xs mb-10 max-w-2xl mx-auto">
+            Zaufaj doświadczeniu budowanemu od 1992 roku. <br className="md:hidden"/> Twoje ładunki w bezpiecznych rękach.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4">
             <a
               href="/kontakt"
-              className="bg-black text-white px-10 py-5 rounded-full hover:bg-white hover:text-black transition-all shadow-xl uppercase tracking-widest text-sm"
+              className="bg-white text-red-600 px-10 py-5 rounded-full font-black uppercase italic tracking-widest text-xs md:text-sm hover:bg-black hover:text-white transition-all shadow-2xl flex items-center gap-3"
             >
-              Skontaktuj się
+              Rozpocznij współpracę <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>
