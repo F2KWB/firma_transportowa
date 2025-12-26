@@ -1,35 +1,48 @@
 "use client";
 import React from "react";
 import {
-  Award,
-  Target,
   History,
-  Globe2,
   Truck,
   ShieldCheck,
   Camera,
 } from "lucide-react";
 
 export default function ONasPage() {
+  // Dane galerii z dodanymi linkami do zdjęć
   const gallery = [
-    { title: "Nasza Flota", desc: "Nowoczesne ciągniki siodłowe" },
-    { title: "Baza Leźno", desc: "Centrum operacyjne 24/7" },
-    { title: "Zespół", desc: "Nasi specjaliści w akcji" },
-    { title: "Logistyka", desc: "Precyzyjne zarządzanie ładunkiem" },
+    { 
+      title: "Nasza Flota", 
+      desc: "Nowoczesne ciągniki siodłowe Scania i Volvo",
+      src: "/FB_IMG_1766775933532.jpg"
+    },
+    { 
+      title: "Logistyka", 
+      desc: "Precyzyjne zarządzanie każdym ładunkiem",
+      src: "/FB_IMG_1766775942358.jpg"
+    },
+    { 
+      title: "Magazynowanie", 
+      desc: "Bezpieczne zaplecze w Leźnie",
+      src: "/FB_IMG_1766775920898.jpg"
+    },
+    { 
+      title: "Zespół", 
+      desc: "Doświadczeni kierowcy i spedytorzy",
+      src: "/FB_IMG_1766775908608.jpg"
+    },
   ];
 
   return (
     <main className="min-h-screen bg-white">
 
-
-      {/* 2. ZIG-ZAG SECTION: Tekst Lewo / Zdjęcie Prawo */}
+      {/* 2. ZIG-ZAG SECTION: Nasze Początki (Archiwalne) */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-6">
             <span className="text-red-600 font-black uppercase tracking-widest text-sm italic">
               Nasze Początki
             </span>
-
+            <h2 className="text-4xl font-black uppercase italic tracking-tighter">Budujemy zaufanie od lat</h2>
             <p className="text-gray-500 font-medium leading-relaxed">
               Historia WANTRANZ zaczęła się od marzenia o stworzeniu firmy, dla
               której terminowość to świętość. Przez dwie dekady rozbudowaliśmy
@@ -47,9 +60,11 @@ export default function ONasPage() {
           </div>
           <div className="relative group">
             <div className="aspect-[4/3] bg-gray-100 rounded-[3rem] overflow-hidden shadow-2xl">
-              <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center italic text-gray-400 font-bold">
-                [ZDJĘCIE ARCHIWALNE / PIERWSZE AUTO]
-              </div>
+              <img 
+                src="/FB_IMG_1766775940628.webp" 
+                alt="Archiwalne zdjęcie floty"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-red-600 text-white p-8 rounded-[2rem] font-black italic shadow-xl">
               EST. 1992
@@ -58,20 +73,23 @@ export default function ONasPage() {
         </div>
       </section>
 
-      {/* 3. ZIG-ZAG SECTION: Zdjęcie Lewo / Tekst Prawo */}
+      {/* 3. ZIG-ZAG SECTION: Dzisiaj (Nowoczesne) */}
       <section className="py-24 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
           <div className="order-2 lg:order-1 relative">
             <div className="aspect-[4/3] bg-gray-200 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
-              <div className="w-full h-full bg-gradient-to-tr from-gray-300 to-gray-400 flex items-center justify-center italic text-gray-100 font-bold uppercase tracking-widest">
-                [ZDJĘCIE NOWOCZESNEJ FLOTY]
-              </div>
+              <img 
+                src="/FB_IMG_1766775901699.webp" 
+                alt="Nowoczesna flota Wantranz"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           <div className="order-1 lg:order-2 space-y-6">
             <span className="text-red-600 font-black uppercase tracking-widest text-sm italic">
               Dzisiaj
             </span>
+            <h2 className="text-4xl font-black uppercase italic tracking-tighter">Lider nowoczesnej logistyki</h2>
             <p className="text-gray-500 font-medium leading-relaxed">
               Obecnie WANTRANZ to synonim nowoczesnej logistyki. Inwestujemy w
               najnowsze modele Scania i Volvo, spełniające rygorystyczne normy
@@ -80,12 +98,10 @@ export default function ONasPage() {
             </p>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 font-bold italic text-sm">
-                <ShieldCheck className="text-red-600 w-5 h-5" /> Monitoring GPS
-                24/7
+                <ShieldCheck className="text-red-600 w-5 h-5" /> Monitoring GPS 24/7
               </li>
               <li className="flex items-center gap-3 font-bold italic text-sm">
-                <Truck className="text-red-600 w-5 h-5" /> Flota nie starsza niż
-                3 lata
+                <Truck className="text-red-600 w-5 h-5" /> Flota nie starsza niż 3 lata
               </li>
             </ul>
           </div>
@@ -107,8 +123,7 @@ export default function ONasPage() {
             </h2>
           </div>
           <p className="text-gray-400 font-medium max-w-xs text-sm">
-            Zajrzyj za kulisy naszej codziennej pracy w Leźnie i na trasach
-            Europy.
+            Zajrzyj za kulisy naszej codziennej pracy w Leźnie i na trasach Europy.
           </p>
         </div>
 
@@ -118,15 +133,22 @@ export default function ONasPage() {
               key={index}
               className="group relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-gray-100 cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500"
             >
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex flex-col justify-end p-8 text-white">
-                <h4 className="font-black uppercase italic text-xl">
+              {/* Overlay z tekstem */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 flex flex-col justify-end p-8 text-white">
+                <h4 className="font-black uppercase italic text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   {item.title}
                 </h4>
-                <p className="text-xs font-medium opacity-80">{item.desc}</p>
+                <p className="text-xs font-medium opacity-80 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                  {item.desc}
+                </p>
               </div>
-              <div className="w-full h-full bg-gradient-to-b from-gray-200 to-gray-400 group-hover:scale-110 transition-transform duration-700 flex items-center justify-center italic text-gray-100 uppercase tracking-tighter">
-                [Foto {index + 1}]
-              </div>
+              
+              {/* Obraz */}
+              <img 
+                src={item.src} 
+                alt={item.title} 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
             </div>
           ))}
         </div>
@@ -141,7 +163,7 @@ export default function ONasPage() {
           <div className="flex flex-wrap justify-center gap-6 font-black italic">
             <a
               href="/kontakt"
-              className="bg-black text-white px-10 py-5 rounded-full hover:bg-white hover:text-black transition-all shadow-xl uppercase"
+              className="bg-black text-white px-10 py-5 rounded-full hover:bg-white hover:text-black transition-all shadow-xl uppercase tracking-widest text-sm"
             >
               Skontaktuj się
             </a>

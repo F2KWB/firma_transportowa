@@ -8,20 +8,30 @@ import Link from "next/link";
 const SERVICES = [
   {
     title: "Transport Krajowy",
+    label: "Polska bez barier", // <--- Twoja zmiana tutaj
     desc: "Szybka i bezpieczna dostawa na terenie całego kraju. Standard Next-Day.",
-    img: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070",
+    img: "/FB_IMG_1766775933532.jpg",
     link: "/uslugi/transport-krajowy",
   },
   {
     title: "Transport Międzynarodowy",
+    label: "Trasy UE & UK", // <--- Twoja zmiana tutaj
     desc: "Specjaliści na trasie Polska — Wielka Brytania. Pełna obsługa celna.",
-    img: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075",
+    img: "/FB_IMG_1766775905563.jpg",
     link: "/uslugi/transport-miedzynarodowy",
   },
   {
-    title: "Spedycja i Logistyka",
+    title: "Spedycja",
+    label: "Zarządzanie Ładunkiem", // <--- Twoja zmiana tutaj
     desc: "Kompleksowe zarządzanie łańcuchem dostaw z centrum w Leźnie.",
-    img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070",
+    img: "/FB_IMG_1766775920898.jpg",
+    link: "/uslugi/spedycja",
+  },
+  {
+    title: "Logistyka i Magazynowanie",
+    label: "Baza Leźno", // <--- Twoja zmiana tutaj
+    desc: "Kompleksowe zarządzanie łańcuchem dostaw z centrum w Leźnie.",
+    img: "/FB_IMG_1766775944357.jpg",
     link: "/uslugi/spedycja",
   },
 ];
@@ -52,7 +62,8 @@ export default function Hero() {
   }, [emblaApi, onSelect]);
 
   return (
-<section className="relative w-full h-[75vh] min-h-[550px] bg-white overflow-hidden group touch-pan-y" ref={emblaRef}>      <div className="flex h-full">
+    <section className="relative w-full h-[75vh] min-h-[550px] bg-white overflow-hidden group touch-pan-y" ref={emblaRef}>
+      <div className="flex h-full">
         {SERVICES.map((service, index: number) => (
           <div
             key={index}
@@ -70,11 +81,11 @@ export default function Hero() {
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white via-white/20 to-transparent" />
             </div>
 
-            {/* TREŚĆ */}
+            {/* TREŚĆ - PRZYWRÓCONE CENTROWANIE */}
             <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-center text-center">
               <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-red-600 text-white rounded-full mb-6 mx-auto w-fit shadow-lg">
                 <span className="font-black uppercase italic tracking-widest text-[10px]">
-                  Standard Wantranz
+                  {service.label} {/* <--- JEDYNA ZMIANA: dynamiczny tekst */}
                 </span>
               </div>
 
@@ -105,7 +116,7 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* STRZAŁKI NAWIGACYJNE - Pojawiają się po najechaniu (group-hover) */}
+      {/* STRZAŁKI */}
       <button
         onClick={() => emblaApi?.scrollPrev()}
         className="absolute left-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hover:bg-red-600 hover:border-red-600"
@@ -122,7 +133,7 @@ export default function Hero() {
         <ChevronRight className="w-8 h-8" />
       </button>
 
-      {/* DOTS */}
+      {/* DOTS - PRZYWRÓCONY ŚRODEK */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {scrollSnaps.map((_, index: number) => (
           <button
@@ -135,11 +146,8 @@ export default function Hero() {
           />
         ))}
       </div>
-
-{/* ... reszta kodu karuzeli, kropki (Dots) itp. ... */}
       
       <style jsx>{`
-        /* Animacja działa TYLKO na urządzeniach z myszką (desktop) */
         @media (min-width: 1024px) {
           .animate-slow-zoom {
             animation: slow-zoom 20s infinite alternate ease-in-out;
@@ -147,25 +155,20 @@ export default function Hero() {
             transform: translateZ(0);
           }
         }
-
-        /* Na telefonach obraz jest statyczny - to usunie zacinanie */
         @media (max-width: 1023px) {
           .animate-slow-zoom {
             animation: none !important;
             transform: scale(1.05); 
           }
         }
-
         @keyframes slow-zoom {
           from { transform: scale(1); }
           to { transform: scale(1.12); }
         }
-
-        /* Poprawa responsywności dotyku */
         section {
           touch-action: pan-y;
         }
       `}</style>
     </section>
   );
-} // <--- TO JEST OSTATNI NAWIAS KLAMROWY CAŁEGO PLIKU
+}

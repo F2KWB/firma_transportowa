@@ -6,7 +6,6 @@ import Kierunki from "./components/kierunki";
 import Lokalizacja from "./components/lokalizacja";
 
 import Stats from "./components/statystyki"; // Import nowej sekcji
-import Team from "./components/zespol";
 import Contact from "./components/kontakt";
 import Truck from "./components/ciezarowka";
 
