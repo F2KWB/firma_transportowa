@@ -26,7 +26,7 @@ export default function FleetHotspotsFixed() {
 
   return (
     /* 1. USUNIĘTO overflow-hidden, DODANO z-20 aby sekcja była nad innymi */
-    <section className="relative w-full bg-white py-16 z-20">
+    <section className="relative w-full bg-white py-16 z-20 overflow-x-hidden">
       <div className="max-w-6xl mx-auto px-4 text-center">
         
         <div className="mb-8">
