@@ -143,13 +143,6 @@ export default function RoutesSection() {
   </div>
 </div>
 
-<div className="mt-8 text-center">
-  <div className="inline-block bg-white px-6 py-3 rounded-full border border-zinc-100 shadow-sm hover:border-zinc-300 transition-colors cursor-pointer group">
-    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-900 group-hover:text-red-600 transition-colors">
-      Szybka wycena trasy Polska — UK
-    </p>
-  </div>
-</div>
               <div className="mt-12 text-center">
                 <div className="inline-block bg-red-50 px-6 py-2 rounded-full border border-red-100">
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-red-700">
