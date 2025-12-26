@@ -27,14 +27,8 @@ const SERVICES = [
 ];
 
 export default function Hero() {
-  // HOOKI MUSZĄ BYĆ TUTAJ (wewnątrz funkcji)
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { 
-      loop: true, 
-      duration: 25, 
-      dragFree: true, 
-      containScroll: "trimSnaps" 
-    }, 
+    { loop: true, duration: 30 }, 
     [Autoplay({ delay: 7000, stopOnInteraction: false })]
   );
 
@@ -58,11 +52,7 @@ export default function Hero() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section 
-      className="relative w-full h-[75vh] min-h-[550px] bg-white overflow-hidden group touch-pan-y" 
-      ref={emblaRef}
-    >
-      <div className="flex h-full">
+<section className="relative w-full h-[75vh] min-h-[550px] bg-white overflow-hidden group touch-pan-y" ref={emblaRef}>      <div className="flex h-full">
         {SERVICES.map((service, index: number) => (
           <div
             key={index}
@@ -115,20 +105,18 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* STRZAŁKI NAWIGACYJNE */}
+      {/* STRZAŁKI NAWIGACYJNE - Pojawiają się po najechaniu (group-hover) */}
       <button
-        type="button"
         onClick={() => emblaApi?.scrollPrev()}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hover:bg-red-600 hover:border-red-600 hidden md:flex"
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hover:bg-red-600 hover:border-red-600"
         aria-label="Poprzedni slajd"
       >
         <ChevronLeft className="w-8 h-8" />
       </button>
 
       <button
-        type="button"
         onClick={() => emblaApi?.scrollNext()}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hover:bg-red-600 hover:border-red-600 hidden md:flex"
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hover:bg-red-600 hover:border-red-600"
         aria-label="Następny slajd"
       >
         <ChevronRight className="w-8 h-8" />
@@ -139,7 +127,6 @@ export default function Hero() {
         {scrollSnaps.map((_, index: number) => (
           <button
             key={index}
-            type="button"
             onClick={() => emblaApi?.scrollTo(index)}
             className={`h-1.5 rounded-full transition-all duration-500 ${
               index === selectedIndex ? "w-10 bg-red-600 shadow-md" : "w-2.5 bg-gray-400/50"
@@ -149,22 +136,36 @@ export default function Hero() {
         ))}
       </div>
 
+{/* ... reszta kodu karuzeli, kropki (Dots) itp. ... */}
+      
       <style jsx>{`
-        .animate-slow-zoom {
-          animation: slow-zoom 20s infinite alternate ease-in-out;
-          transform: translateZ(0); /* Akceleracja sprzętowa dla mobile */
+        /* Animacja działa TYLKO na urządzeniach z myszką (desktop) */
+        @media (min-width: 1024px) {
+          .animate-slow-zoom {
+            animation: slow-zoom 20s infinite alternate ease-in-out;
+            will-change: transform;
+            transform: translateZ(0);
+          }
         }
-        
-        /* Zatrzymanie animacji podczas interakcji dla płynności */
-        section:active .animate-slow-zoom {
-          animation-play-state: paused;
+
+        /* Na telefonach obraz jest statyczny - to usunie zacinanie */
+        @media (max-width: 1023px) {
+          .animate-slow-zoom {
+            animation: none !important;
+            transform: scale(1.05); 
+          }
         }
 
         @keyframes slow-zoom {
-          from { transform: scale(1) translateZ(0); }
-          to { transform: scale(1.12) translateZ(0); }
+          from { transform: scale(1); }
+          to { transform: scale(1.12); }
+        }
+
+        /* Poprawa responsywności dotyku */
+        section {
+          touch-action: pan-y;
         }
       `}</style>
     </section>
   );
-}
+} // <--- TO JEST OSTATNI NAWIAS KLAMROWY CAŁEGO PLIKU
