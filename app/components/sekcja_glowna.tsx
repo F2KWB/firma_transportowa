@@ -26,15 +26,17 @@ const SERVICES = [
   },
 ];
 
-const [emblaRef, emblaApi] = useEmblaCarousel(
-  { 
-    loop: true, 
-    duration: 25,     // Szybsza reakcja na gest
-    dragFree: true,   // Płynne przesuwanie palcem
-    containScroll: "trimSnaps" 
-  }, 
-  [Autoplay({ delay: 7000, stopOnInteraction: false })]
-);
+export default function Hero() {
+  // HOOKI MUSZĄ BYĆ TUTAJ (wewnątrz funkcji)
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { 
+      loop: true, 
+      duration: 25, 
+      dragFree: true, 
+      containScroll: "trimSnaps" 
+    }, 
+    [Autoplay({ delay: 7000, stopOnInteraction: false })]
+  );
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
@@ -56,7 +58,10 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="relative w-full h-[75vh] min-h-[550px] bg-white overflow-hidden group" ref={emblaRef}>
+    <section 
+      className="relative w-full h-[75vh] min-h-[550px] bg-white overflow-hidden group touch-pan-y" 
+      ref={emblaRef}
+    >
       <div className="flex h-full">
         {SERVICES.map((service, index: number) => (
           <div
@@ -110,18 +115,20 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
         ))}
       </div>
 
-      {/* STRZAŁKI NAWIGACYJNE - Pojawiają się po najechaniu (group-hover) */}
+      {/* STRZAŁKI NAWIGACYJNE */}
       <button
+        type="button"
         onClick={() => emblaApi?.scrollPrev()}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hover:bg-red-600 hover:border-red-600"
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hover:bg-red-600 hover:border-red-600 hidden md:flex"
         aria-label="Poprzedni slajd"
       >
         <ChevronLeft className="w-8 h-8" />
       </button>
 
       <button
+        type="button"
         onClick={() => emblaApi?.scrollNext()}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hover:bg-red-600 hover:border-red-600"
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hover:bg-red-600 hover:border-red-600 hidden md:flex"
         aria-label="Następny slajd"
       >
         <ChevronRight className="w-8 h-8" />
@@ -132,6 +139,7 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
         {scrollSnaps.map((_, index: number) => (
           <button
             key={index}
+            type="button"
             onClick={() => emblaApi?.scrollTo(index)}
             className={`h-1.5 rounded-full transition-all duration-500 ${
               index === selectedIndex ? "w-10 bg-red-600 shadow-md" : "w-2.5 bg-gray-400/50"
@@ -142,12 +150,19 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
       </div>
 
       <style jsx>{`
-        @keyframes slow-zoom {
-          from { transform: scale(1); }
-          to { transform: scale(1.12); }
-        }
         .animate-slow-zoom {
           animation: slow-zoom 20s infinite alternate ease-in-out;
+          transform: translateZ(0); /* Akceleracja sprzętowa dla mobile */
+        }
+        
+        /* Zatrzymanie animacji podczas interakcji dla płynności */
+        section:active .animate-slow-zoom {
+          animation-play-state: paused;
+        }
+
+        @keyframes slow-zoom {
+          from { transform: scale(1) translateZ(0); }
+          to { transform: scale(1.12) translateZ(0); }
         }
       `}</style>
     </section>
