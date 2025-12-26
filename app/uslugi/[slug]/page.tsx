@@ -20,7 +20,7 @@ const servicesData: Record<string, any> = {
     icon: <Truck className="w-12 h-12" />,
     desc: "Zapewniamy błyskawiczny przepływ towarów na terenie całego kraju. Wykorzystujemy zaawansowaną analitykę tras, aby Twoje ładunki docierały do celu zawsze na czas.",
     features: ["Dostawy Next-Day", "Nowoczesna flota", "Pełne ubezpieczenie OCP", "Śledzenie Real-Time"],
-    bgImage: "/FB_IMG_1766775933532.jpg",
+    bgImage: "/FB_IMG_1766775908608.webp",
   },
   "transport-miedzynarodowy": {
     title: "Transport Międzynarodowy",

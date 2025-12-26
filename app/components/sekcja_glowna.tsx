@@ -10,7 +10,7 @@ const SERVICES = [
     title: "Transport Krajowy",
     label: "Polska bez barier", // <--- Twoja zmiana tutaj
     desc: "Szybka i bezpieczna dostawa na terenie całego kraju. Standard Next-Day.",
-    img: "/FB_IMG_1766775933532.jpg",
+    img: "/FB_IMG_1766775908608.webp",
     link: "/uslugi/transport-krajowy",
   },
   {
