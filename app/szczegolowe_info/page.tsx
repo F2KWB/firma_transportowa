@@ -66,7 +66,7 @@ export default function ONasPage() {
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
             </div>
-            <div className="absolute -bottom-6 -right-1 bg-red-600 text-white p-5 rounded-[2rem] font-black italic shadow-xl">
+            <div className="absolute -bottom-6 right-0 md:-right-6 bg-red-600 text-white p-5 rounded-[2rem] font-black italic shadow-xl">
               Rok 1992
             </div>
           </div>
