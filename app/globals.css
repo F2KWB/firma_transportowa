@@ -1,28 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background:   #FFFFFF; 
-  --foreground: #171717;
+  /* Mówimy przeglądarce: "Mamy oba tryby, nie wtrącaj się!" */
+  color-scheme: light dark;
+  
+  /* Kolory domyślne (Białe) */
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+/* OTO TRIK: Kiedy system chce ciemny tryb, my i tak dajemy biały */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff; /* Zamiast czarnego dajemy biały! */
+    --foreground: #000000; /* Zamiast jasnego dajemy czarny! */
+  }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  
+  /* Przypisujemy zmienne */
+  background-color: var(--background);
+  color: var(--foreground);
+  
+  /* Ważne: Blokujemy automatyczne dostosowanie kolorów przez system */
+  forced-color-adjust: none; 
 }
 
 html {
   scroll-behavior: smooth;
-}
-img {
-  transform: translateZ(0); /* Wymusza użycie GPU */
-  will-change: transform;    /* Informuje przeglądarkę o nadchodzącej animacji */
+  /* Na wszelki wypadek tło dla html też białe */
+  background-color: #ffffff;
 }

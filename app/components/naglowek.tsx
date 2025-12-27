@@ -45,14 +45,14 @@ export default function Header() {
     <header className="bg-red-600 sticky top-0 z-50 shadow-sm w-full font-sans border-b border-gray-100">
       <nav className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center text-black">
         {/* LOGO */}
-        <Link href="/" className="flex flex-col leading-none">
+        <a href="/" className="flex flex-col leading-none">
           <span className="text-2xl font-black italic tracking-tighter text-white">
             WANTRANZ
           </span>
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
             Transport i Spedycja
           </span>
-        </Link>
+        </a>
 
         {/* MENU DESKTOP */}
         <div className="hidden md:flex items-center gap-8">
